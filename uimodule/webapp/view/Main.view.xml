@@ -1,0 +1,22 @@
+<mvc:View controllerName="com.switchhouse.farmtenz.controller.Main" height="100%"
+  xmlns="sap.m"
+  xmlns:tnt="sap.tnt"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc">
+
+  <tnt:ToolPage id="toolPageId">
+    <tnt:header>
+      <tnt:ToolHeader id="toolHeader">
+        <core:Fragment fragmentName="com.switchhouse.farmtenz.view.fragments.HeaderBar" type="XML" />
+      </tnt:ToolHeader>
+    </tnt:header>
+    <tnt:sideContent >
+        <core:Fragment fragmentName="com.switchhouse.farmtenz.view.fragments.SideBar" type="XML" />
+    </tnt:sideContent>
+    <tnt:mainContents>
+        <NavContainer id="pageContainerId" width="100%">
+            <!-- Put the content Here -->
+        </NavContainer>
+    </tnt:mainContents>
+  </tnt:ToolPage>
+</mvc:View>

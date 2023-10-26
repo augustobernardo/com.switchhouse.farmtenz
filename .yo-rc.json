@@ -1,0 +1,23 @@
+{
+  "generator-template-ui5-project": {
+    "projectname": "farmtenz",
+    "namespaceUI5": "com.switchhouse",
+    "enableFPM": false,
+    "platform": "Static webserver",
+    "viewtype": "XML",
+    "ui5libs": "Content delivery network (OpenUI5)",
+    "newdir": true,
+    "initrepo": false,
+    "namespaceURI": "com/switchhouse",
+    "uimodules": [
+      "uimodule"
+    ],
+    "opa5Journeys": [
+      "Main"
+    ],
+    "opa5pos": [
+      "Main"
+    ],
+    "setupCompleted": true
+  }
+}

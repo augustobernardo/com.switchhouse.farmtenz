@@ -1,0 +1,61 @@
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/core/routing/History",
+    "sap/ui/core/UIComponent",
+    "com/switchhouse/farmtenz/model/formatter"
+], function (Controller, History, UIComponent, formatter) {
+        "use strict";
+
+        return Controller.extend("com.switchhouse.farmtenz.controller.BaseController", {
+            formatter: formatter,
+
+            getModel: function (sName) {
+                return this.getView().getModel(sName);
+            },
+
+            setModel: function (oModel, sName) {
+                return this.getView().setModel(oModel, sName);
+            },
+
+            getResourceBundle: function () {
+                return this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            },
+
+            navTo: function (psTarget, pmParameters, pbReplace) {
+                this.getRouter().navTo(psTarget, pmParameters, pbReplace);
+            },
+
+            getRouter: function () {
+                return UIComponent.getRouterFor(this);
+            },
+
+            onNavBack: function () {
+                const sPreviousHash = History.getInstance().getPreviousHash();
+
+                if (sPreviousHash !== undefined) {
+                    window.history.back();
+                } else {
+                    this.getRouter().navTo("appHome", {}, true /* no history*/);
+                }
+            },
+
+            onSideNavButtonPress: function () {
+                const oToolPage = this.byId("toolPageId");
+                const bSideExpanded = oToolPage.getSideExpanded();
+
+                this._setToggleButtonTooltip(bSideExpanded);
+
+                oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
+            },
+
+            _setToggleButtonTooltip: function (bLarge) {
+                const oToggleButton = this.byId('sideNavigationToggleButton');
+                if (bLarge) {
+                oToggleButton.setTooltip('Large Size Navigation');
+                } else {
+                oToggleButton.setTooltip('Small Size Navigation');
+                }
+            }
+        });
+    },
+);
