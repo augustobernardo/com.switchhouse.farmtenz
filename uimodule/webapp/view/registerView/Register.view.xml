@@ -1,0 +1,48 @@
+<mvc:View controllerName="com.switchhouse.farmtenz.controller.Register" height="100%"
+  xmlns="sap.m"
+  xmlns:main="sap.ui.webc.main"
+  xmlns:tnt="sap.tnt"
+  xmlns:f="sap.f"
+  xmlns:card="sap.f.cards"
+  xmlns:core="sap.ui.core"
+  xmlns:mvc="sap.ui.core.mvc">
+
+  <Page id="pageRegister" showHeader="false">
+    <content>
+      <VBox id="vboxRegister" justifyContent="Center" alignContent="Center" alignItems="Center" class="sapUiLargeMarginTop">
+        <Title id="titleRegister" class="sapUiSmallMarginBottom sapUiLargeMarginTop" text="{i18n>title}" level="H1" titleStyle="H2" textAlign="Center"/>
+
+        <f:Card id="cardRegister">
+          <f:header>
+            <card:Header id="cardHeaderRegister" title="Cadastre-se" subtitle="Por favor, preencha os campos abaixo para criar sua conta." />
+          </f:header>
+          <f:content>
+            <VBox id="lblFormRegister" class="sapUiSmallMargin" width="100%">
+              <Label id="lblEmail" text="Email" required="true" />
+              <Input id="email" type="Email" value="{formLogReg>/EmailRegister}" />
+
+              <Label id="lblName" text="Nome" required="true" />
+              <Input id="name" type="Text" value="{formLogReg>/NameRegister}" />
+
+              <Label id="lblPass" text="Senha" required="true" />
+              <Input id="password" type="Password" value="{formLogReg>/PassRegister}" />
+
+              <Label id="lblPassConfirm" text="Confirmar Senha" required="true" />
+              <Input id="passwordConfirm" type="Password" value="{formLogReg>/ConfigPassRegister}" />
+
+              <VBox id="vboxBtnRegister" width="100%" class="sapUiSmallMarginTop" justifyContent="Center" alignContent="Center" alignItems="Center">
+                <Button id="btnRegister" width="15rem" type="Emphasized" text="Criar Conta" press="onRegister" />
+              </VBox>
+
+              <HBox id="hboxRegister" width="100%" justifyContent="Center">
+                <Text id="textRegister" text="Já possui uma conta?" class="sapUiSmallMarginTop" />
+                <ToolbarSpacer id="toolbarSpacer" width="0.2rem"/>
+                <Link id="linkRegister" text="Entrar na minha conta" press="onRouteLogin" class="sapUiSmallMarginTop" />
+              </HBox>
+            </VBox>
+          </f:content>
+        </f:Card>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

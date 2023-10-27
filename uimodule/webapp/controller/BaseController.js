@@ -48,6 +48,14 @@ sap.ui.define([
                 oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
             },
 
+            setFocus: function(sId) {
+                const oInput = this.getView().byId(sId);
+
+                setTimeout(function() {
+                    oInput.focus();
+                }, 0);
+            },
+
             _setToggleButtonTooltip: function (bLarge) {
                 const oToggleButton = this.byId('sideNavigationToggleButton');
                 if (bLarge) {

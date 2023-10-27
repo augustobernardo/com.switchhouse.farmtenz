@@ -1,4 +1,4 @@
-<mvc:View controllerName="com.switchhouse.farmtenz.controller.Main" height="100%"
+<mvc:View controllerName="com.switchhouse.farmtenz.controller.Home" height="100%"
   xmlns="sap.m"
   xmlns:tnt="sap.tnt"
   xmlns:core="sap.ui.core"

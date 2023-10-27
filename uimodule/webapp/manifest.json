@@ -36,6 +36,7 @@
     "dependencies": {
       "minUI5Version": "1.102.0",
       "libs": {
+        "sap.f": {},
         "sap.m": {},
         "sap.ui.core": {}
       }
@@ -64,6 +65,9 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
+        "bypassed": {
+          "target": "notFound"
+        },
         "viewPath": "com.switchhouse.farmtenz.view",
         "controlAggregation": "pages",
         "controlId": "app",
@@ -71,21 +75,39 @@
       },
       "routes": [
         {
-          "name": "RouteMainView",
-          "pattern": ":?query:",
+          "name": "login",
+          "pattern": "",
           "target": [
-            "TargetMainView"
+            "login"
+          ]
+        },
+        {
+          "name": "register",
+          "pattern": "register",
+          "target": [
+            "register"
           ]
         }
       ],
       "targets": {
-        "TargetMainView": {
+        "login": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,
-          "viewId": "Main",
-          "viewName": "Main"
-        }
+          "viewId": "Login",
+          "viewName": "loginView/Login"
+        },
+        "register": {
+          "viewType": "XML",
+          "clearControlAggregation": false,
+          "viewId": "Register",
+          "viewName": "registerView/Register"
+        },
+        "notFound": {
+          "id": "notFound",
+          "name": "NotFound",
+          "transition": "show"
+       }
       }
     },
     "rootView": {
