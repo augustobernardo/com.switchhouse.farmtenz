@@ -87,9 +87,5 @@ sap.ui.define([
 		onLiveChangeConfPass: function(oEvent) {
 
 		},
-
-		onRouteLogin: function() {
-			this.navTo("login");
-		},
 	});
 });

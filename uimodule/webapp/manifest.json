@@ -96,6 +96,13 @@
           ]
         },
         {
+          "name": "forgotPassword",
+          "pattern": "forgotPassword",
+          "target": [
+            "forgotPassword"
+          ]
+        },
+        {
           "name": "NotFound",
           "pattern": "NotFound",
           "target": [
@@ -123,6 +130,13 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "homeView/Home"
+        },
+        "forgotPassword": {
+          "viewType": "XML",
+          "transition": "show",
+          "clearControlAggregation": false,
+          "viewId": "ForgotPassword",
+          "viewName": "forgotPassView/ForgotPass"
         },
         "NotFound": {
           "viewId": "NotFound",

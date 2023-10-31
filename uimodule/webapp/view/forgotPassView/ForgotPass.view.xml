@@ -1,0 +1,99 @@
+<mvc:View
+	controllerName="com.switchhouse.farmtenz.controller.ForgotPass"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+  xmlns:f="sap.f"
+  xmlns:card="sap.f.cards"
+	displayBlock="true"
+	height="100%"
+	busyIndicatorDelay="0">
+
+  <Page id="page_register" showHeader="false">
+    <content>
+      <VBox 
+        id="vbox_register"
+        justifyContent="Center"
+        alignContent="Center"
+        alignItems="Center"
+        class="sapUiLargeMarginTop">
+  
+        <Title
+          id="title_register"
+          class="sapUiSmallMarginBottom
+          sapUiLargeMarginTop"
+          text="{i18n>title}"
+          level="H1"
+          titleStyle="H2" textAlign="Center"/>
+  
+        <f:Card id="card_register">
+  
+          <f:header>
+            <card:Header 
+              id="card_header_register" 
+              title="{i18n>forgotPass.title}" 
+              subtitle="{i18n>forgotPass.subTitle}" />
+          </f:header>
+  
+          <f:content>
+            <VBox
+              id="forgotPass_vbox"
+              class="sapUiSmallMargin"
+              width="100%">
+  
+              <!-- EMAIL -->
+              <Label 
+                id="lbl_email_forgotPass"
+                text="{i18n>form.email}" 
+                required="true" />
+              <Input
+                id="input_email_forgotPass"
+                type="Email"
+                liveChange="onLiveChangeEmail"
+                submit="onSubmitForgotPass"
+                value="{forgotPass>/ForgotPass/Email}"/>
+    
+              <!-- BUTTON REGISTER -->
+              <VBox
+                id="vbox_btn_forgotPass"
+                width="100%"
+                class="sapUiSmallMarginTop"
+                justifyContent="Center"
+                alignContent="Center"
+                alignItems="Center">
+                
+                  <Button 
+                    id="btn_register_forgotPass" 
+                    width="15rem" 
+                    type="Emphasized" 
+                    text="{i18n>forgotPass.btnRecovery}" 
+                    press="onForgotPass" />
+              </VBox>
+
+              <!-- LINK BACK TO LOGIN -->
+              <HBox
+                id="hbox_register"
+                width="100%"
+                justifyContent="Center">
+
+                <Text
+                  id="text_register"
+                  text="{i18n>forgotPass.rememberPass}"
+                  class="sapUiSmallMarginTop" />
+
+                <ToolbarSpacer
+                  id="toolbar_spacer"
+                  width="0.2rem" />
+
+                <Link
+                  id="link_register"
+                  text="{i18n>forgotPass.backToLogin}"
+                  press="onRouteLogin"
+                  class="sapUiSmallMarginTop" />
+              </HBox>
+            </VBox>
+          </f:content>
+        </f:Card>
+      </VBox>
+    </content>
+  </Page>
+</mvc:View>

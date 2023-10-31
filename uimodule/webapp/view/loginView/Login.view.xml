@@ -75,7 +75,7 @@
                 <Link
                   id="link_forgot"
                   text="{i18n>login.forgotPassword}"
-                  press="onForgot"
+                  press="onRouteForgot"
                   class="sapUiTinyMarginTop" />
               </HBox>
 
