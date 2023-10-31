@@ -30,18 +30,18 @@ sap.ui.define([
 		},
 
 		onNavBack: function () {
-			const sPreviousHash = History.getInstance().getPreviousHash();
+			let sPreviousHash = History.getInstance().getPreviousHash();
 
 			if (sPreviousHash !== undefined) {
-			window.history.back();
+				window.history.back();
 			} else {
-			this.getRouter().navTo("login", {}, true /* no history*/);
+				this.getRouter().navTo("login", {}, true /* no history*/);
 			}
 		},
 
 		onSideNavButtonPress: function () {
-			const oToolPage = this.byId("toolPageId");
-			const bSideExpanded = oToolPage.getSideExpanded();
+			let oToolPage = this.byId("toolPageId");
+			let bSideExpanded = oToolPage.getSideExpanded();
 
 			this._setToggleButtonTooltip(bSideExpanded);
 
@@ -49,47 +49,26 @@ sap.ui.define([
 		},
 
 		setFocus: function(sId) {
-			const oInput = this.getView().byId(sId);
+			let oInput = this.getView().byId(sId);
 
 			setTimeout(function() {
-			oInput.focus();
+				oInput.focus();
 			}, 0);
 		},
 
 		_setToggleButtonTooltip: function (bLarge) {
-			const oToggleButton = this.byId('sideNavigationToggleButton');
+			let oToggleButton = this.byId('sideNavigationToggleButton');
+			let oResourceBundle = this.getResourceBundle();
 			if (bLarge) {
-			oToggleButton.setTooltip('Large Size Navigation');
+				oToggleButton.setTooltip(oResourceBundle.getText('sideNavigationToggleButtonTooltipCollapsed'));
 			} else {
-			oToggleButton.setTooltip('Small Size Navigation');
-			}
-		},
-
-		checkMandatoryFields: function(oInputEmail, oInputPass) {
-			const oResourceBundle = this.getResourceBundle();
-			const sEmail = oInputEmail.getValue();
-			const sPassword = oInputPass.getValue();
-
-			if (sEmail === "") {
-				oInputEmail.setValueState(sap.ui.core.ValueState.Error);
-				oInputEmail.setValueStateText(oResourceBundle.getText("form.emailRequired"));
-			} else {
-				oInputEmail.setValueState(sap.ui.core.ValueState.None);
-				oInputEmail.setValueStateText("");
-			}
-
-			if (sPassword === "") {
-				oInputPass.setValueState(sap.ui.core.ValueState.Error);
-				oInputPass.setValueStateText(oResourceBundle.getText("form.passwordRequired"));
-			} else {
-				oInputPass.setValueState(sap.ui.core.ValueState.None);
-				oInputPass.setValueStateText("");
+				oToggleButton.setTooltip(oResourceBundle.getText('sideNavigationToggleButtonTooltipExpanded'));
 			}
 		},
 
 		checkEmail: function(sEmail, oInputEmail) {
-			const oResourceBundle = this.getResourceBundle();
 			const rRegexEmail = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+			let oResourceBundle = this.getResourceBundle();
 
 			if (sEmail === "") {
 				oInputEmail.setValueState(sap.ui.core.ValueState.Error);
@@ -108,8 +87,8 @@ sap.ui.define([
 		},
 
 		checkUsername: function(sUsername, oInputUsername) {
-			const oResourceBundle = this.getResourceBundle();
 			const rRegexUsername = /^.{3,}$/g;
+			let oResourceBundle = this.getResourceBundle();
 
 			if (sUsername === "") {
 				oInputUsername.setValueState(sap.ui.core.ValueState.Error);
@@ -128,8 +107,8 @@ sap.ui.define([
 		},
 
 		checkPassword: function(sPassword, oInputPass) {
-			const oResourceBundle = this.getResourceBundle();
 			const rRegexPassword = /^.{8,}$/g;
+			let oResourceBundle = this.getResourceBundle();
 
 			if (sPassword === "") {
 				oInputPass.setValueState(sap.ui.core.ValueState.Error);
@@ -148,7 +127,7 @@ sap.ui.define([
 		},
 
 		checkPasswordConfirm: function(sPasswordConfirm, sPassword, oInputConfPass) {
-			const oResourceBundle = this.getResourceBundle();
+			let oResourceBundle = this.getResourceBundle();
 
 			if (sPasswordConfirm === "") {
 				oInputConfPass.setValueState(sap.ui.core.ValueState.Error);
@@ -167,14 +146,14 @@ sap.ui.define([
 		},
 
 		setCookie: function(sName, sValue, iExdays) {
-			const oDate = new Date();
+			let oDate = new Date();
 			oDate.setTime(oDate.getTime() + (iExdays*24*60*60*1000));
-			const sExpires = `expires=${oDate.toUTCString()}`;
+			let sExpires = `expires=${oDate.toUTCString()}`;
 			document.cookie = `${sName}=${sValue};${sExpires};path=/`;
 		},
 
 		resetFieldsState: function(sFormId) {
-			var oVBox = this.byId(sFormId);
+			let oVBox = this.byId(sFormId);
 
 			oVBox.getItems().forEach(oItem => {
 				if (oItem.getMetadata().getName() === "sap.m.Input") {
@@ -193,22 +172,22 @@ sap.ui.define([
 		},
 
 		onLiveChangeEmail: function(oEvent) {
-			const oInputEmail = oEvent.getSource();
-			const sEmail = oInputEmail.getValue();
+			let oInputEmail = oEvent.getSource();
+			let sEmail = oInputEmail.getValue();
 
             this.checkEmail(sEmail, oInputEmail);
         },
 
 		onLiveChangePass: function(oEvent) {
-			const oInputPass = oEvent.getSource();
-			const sPassword = oInputPass.getValue();
+			let oInputPass = oEvent.getSource();
+			let sPassword = oInputPass.getValue();
 
 			this.checkPassword(sPassword, oInputPass);
 		},
 
 		onLiveChangeUsername: function(oEvent) {
-			const oInputUsername = oEvent.getSource();
-			const sUsername = oInputUsername.getValue();
+			let oInputUsername = oEvent.getSource();
+			let sUsername = oInputUsername.getValue();
 
 			this.checkUsername(sUsername, oInputUsername);
 		},

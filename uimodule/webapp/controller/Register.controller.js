@@ -34,30 +34,18 @@ sap.ui.define([
 		},
 
 		_checkRegisterForm: function() {
-			const oInputEmail = this._oView.byId("input_email_register");
-			const oInputUsername = this._oView.byId("input_username_register");
-			const oInputPass = this._oView.byId("input_pass_register");
-			const oInputConfPass = this._oView.byId("input_confirm_pass_register");
+			let sEmail = this._oModelView.getProperty("/RegisterForm/Email");
+			let sUsername = this._oModelView.getProperty("/RegisterForm/Username");
+			let sPassword = this._oModelView.getProperty("/RegisterForm/Password");
+			let sPasswordConfirm = this._oModelView.getProperty("/RegisterForm/PasswordConfirm");
 
-			const sEmail = this._oModelView.getProperty("/RegisterForm/Email");
-			const sUsername = this._oModelView.getProperty("/RegisterForm/Username");
-			const sPassword = this._oModelView.getProperty("/RegisterForm/Password");
-			const sPasswordConfirm = this._oModelView.getProperty("/RegisterForm/PasswordConfirm");
+			let bResultEmail = this.checkEmail(sEmail, this._oView.byId("input_email_register"));
+			let bResultUsername = this.checkUsername(sUsername, this._oView.byId("input_username_register"));
+			let bResultPassword = this.checkPassword(sPassword, this._oView.byId("input_pass_register"));
+			let bResultPasswordConfirm = this.checkPasswordConfirm(sPasswordConfirm, sPassword, this._oView.byId("input_confirm_pass_register"));
 
-
-			this.checkMandatoryFields(oInputEmail, oInputPass)
-
-			if (oInputEmail.getValueState() === "None" || oInputPass.getValueState() === "None" 
-				|| oInputUsername.getValueState() === "None" || oInputConfPass.getValueState() === "None") {
-
-				const bResultEmail = this.checkEmail(sEmail, oInputEmail);
-				const bResultUsername = this.checkUsername(sUsername, oInputUsername);
-				const bResultPassword = this.checkPassword(sPassword, oInputPass);
-				const bResultPasswordConfirm = this.checkPasswordConfirm(sPasswordConfirm, sPassword, oInputConfPass);
-
-				if (bResultEmail && bResultPassword && bResultUsername && bResultPasswordConfirm) {
-					return true;
-				}
+			if (bResultEmail && bResultUsername && bResultPassword && bResultPasswordConfirm) {
+				return true;
 			}
 			return false;
 		},

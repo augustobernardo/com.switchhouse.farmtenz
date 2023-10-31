@@ -33,40 +33,34 @@ sap.ui.define([
         },
 
         _checkLoginForm: function() {
-            const sEmail = this._oModelView.getProperty("/LoginForm/Email");
-            const sPassword = this._oModelView.getProperty("/LoginForm/Password");
-            const oInputEmail = this._oView.byId("input_email");
-            const oInputPass = this._oView.byId("input_pass");
+            let sEmail = this._oModelView.getProperty("/LoginForm/Email");
+            let sPassword = this._oModelView.getProperty("/LoginForm/Password");
 
-            this.checkMandatoryFields(oInputEmail, oInputPass)
+            let bResultEmail = this.checkEmail(sEmail, this._oView.byId("input_email"));
+            let bResultPassword = this.checkPassword(sPassword, this._oView.byId("input_pass"));
 
-            if (oInputEmail.getValueState() === "None" || oInputPass.getValueState() === "None") {
-                const bResultEmail = this.checkEmail(sEmail, oInputEmail);
-                const bResultPassword = this.checkPassword(sPassword, oInputPass);
-
-                if (bResultEmail && bResultPassword) {
-                    return true;
-                }
+            if (bResultEmail && bResultPassword) {
+                return true;
             }
             return false;
         },
 
         onLogin: function() {
             if (this._checkLoginForm()) {
-                const sPassword = this._oModelView.getProperty("/LoginForm/Password");
-                const sEmail = this._oModelView.getProperty("/LoginForm/Email");
-                const bRememberMe = this._oModelView.getProperty("/LoginForm/RememberMe");
+                let sPassword = this._oModelView.getProperty("/LoginForm/Password");
+                let sEmail = this._oModelView.getProperty("/LoginForm/Email");
+                let bRememberMe = this._oModelView.getProperty("/LoginForm/RememberMe");
 
                 // encrypt the password and save it in a cookie that expires in 7 days
                 if (bRememberMe) {
-                    const sCookieName = btoa("rememberMe");
-                    const sCookieValue = btoa(sPassword);
-                    const iDays = 7;
+                    let sCookieName = btoa("rememberMe");
+                    let sCookieValue = btoa(sPassword);
+                    let iDays = 7;
                     this.setCookie(sCookieName, sCookieValue, iDays);
                 }
 
                 // create a token with the email and crypt it
-                const sToken = btoa(sEmail); // decrypt the token -> const sEmail = atob(sToken);
+                let sToken = btoa(sEmail); // decrypt the token -> let sEmail = atob(sToken);
 
                 localStorage.setItem("infoLogin", sToken);
 
