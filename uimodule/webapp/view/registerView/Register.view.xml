@@ -1,48 +1,130 @@
 <mvc:View controllerName="com.switchhouse.farmtenz.controller.Register" height="100%"
   xmlns="sap.m"
-  xmlns:main="sap.ui.webc.main"
-  xmlns:tnt="sap.tnt"
   xmlns:f="sap.f"
   xmlns:card="sap.f.cards"
-  xmlns:core="sap.ui.core"
   xmlns:mvc="sap.ui.core.mvc">
 
-  <Page id="pageRegister" showHeader="false">
-    <content>
-      <VBox id="vboxRegister" justifyContent="Center" alignContent="Center" alignItems="Center" class="sapUiLargeMarginTop">
-        <Title id="titleRegister" class="sapUiSmallMarginBottom sapUiLargeMarginTop" text="{i18n>title}" level="H1" titleStyle="H2" textAlign="Center"/>
+<Page id="page_register" showHeader="false">
+  <content>
+    <VBox 
+      id="vbox_register"
+      justifyContent="Center"
+      alignContent="Center"
+      alignItems="Center"
+      class="sapUiLargeMarginTop">
 
-        <f:Card id="cardRegister">
-          <f:header>
-            <card:Header id="cardHeaderRegister" title="Cadastre-se" subtitle="Por favor, preencha os campos abaixo para criar sua conta." />
-          </f:header>
-          <f:content>
-            <VBox id="lblFormRegister" class="sapUiSmallMargin" width="100%">
-              <Label id="lblEmail" text="Email" required="true" />
-              <Input id="email" type="Email" value="{formLogReg>/EmailRegister}" />
+      <Title
+        id="title_register"
+        class="sapUiSmallMarginBottom
+        sapUiLargeMarginTop"
+        text="{i18n>title}"
+        level="H1"
+        titleStyle="H2" textAlign="Center"/>
 
-              <Label id="lblName" text="Nome" required="true" />
-              <Input id="name" type="Text" value="{formLogReg>/NameRegister}" />
+      <f:Card id="card_register">
 
-              <Label id="lblPass" text="Senha" required="true" />
-              <Input id="password" type="Password" value="{formLogReg>/PassRegister}" />
+        <f:header>
+          <card:Header 
+            id="card_header_register" 
+            title="{i18n>register.title}" 
+            subtitle="{i18n>register.subTitle}" />
+        </f:header>
 
-              <Label id="lblPassConfirm" text="Confirmar Senha" required="true" />
-              <Input id="passwordConfirm" type="Password" value="{formLogReg>/ConfigPassRegister}" />
+        <f:content>
+          <VBox
+            id="register_form"
+            class="sapUiSmallMargin"
+            width="100%">
 
-              <VBox id="vboxBtnRegister" width="100%" class="sapUiSmallMarginTop" justifyContent="Center" alignContent="Center" alignItems="Center">
-                <Button id="btnRegister" width="15rem" type="Emphasized" text="Criar Conta" press="onRegister" />
-              </VBox>
+          <!-- EMAIL -->
+          <Label 
+            id="lbl_email"
+            text="{i18n>form.email}" 
+            required="true" />
+          <Input
+            id="input_email_register"
+            type="Email"
+            liveChange="onLiveChangeEmail"
+            submit="onSubmitRegister"
+            value="{formLogReg>/RegisterForm/Email}"/>
 
-              <HBox id="hboxRegister" width="100%" justifyContent="Center">
-                <Text id="textRegister" text="Já possui uma conta?" class="sapUiSmallMarginTop" />
-                <ToolbarSpacer id="toolbarSpacer" width="0.2rem"/>
-                <Link id="linkRegister" text="Entrar na minha conta" press="onRouteLogin" class="sapUiSmallMarginTop" />
-              </HBox>
-            </VBox>
-          </f:content>
-        </f:Card>
-      </VBox>
-    </content>
-  </Page>
+          <!-- USERNAME -->
+          <Label
+            id="lbl_username"
+            text="{i18n>form.username}"
+            required="true" />
+          <Input
+            id="input_username_register"
+            submit="onSubmitRegister"
+            liveChange="onLiveChangeUsername"
+            value="{formLogReg>/RegisterForm/Username}" />
+
+          <!-- PASSWORD -->
+          <Label
+            id="lbl_pass_register"
+            text="{i18n>form.password}"
+            required="true" />
+          <Input
+            id="input_pass_register"
+            type="Password"
+            submit="onSubmitRegister"
+            liveChange="onLiveChangePass"
+            value="{formLogReg>/RegisterForm/Password}"/>
+
+          <!-- CONFIRM PASSWORD -->
+          <Label
+            id="lbl_pass_confirm"
+            text="{i18n>register.confirmPassword}"
+            required="true" />
+          <Input
+            id="input_confirm_pass_register"
+            type="Password"
+            submit="onSubmitRegister"
+            liveChange="onLiveChangeConfPass"
+            value="{formLogReg>/RegisterForm/PasswordConfirm}" />
+
+          <!-- BUTTON REGISTER -->
+          <VBox
+            id="vbox_btn_register"
+            width="100%"
+            class="sapUiSmallMarginTop"
+            justifyContent="Center"
+            alignContent="Center"
+            alignItems="Center">
+            
+              <Button 
+                id="btn_register_register" 
+                width="15rem" 
+                type="Emphasized" 
+                text="{i18n>form.createAccount}" 
+                press="onRegister" />
+          </VBox>
+
+          <!-- LINK TO LOGIN -->
+          <HBox
+            id="hbox_register"
+            width="100%"
+            justifyContent="Center">
+
+              <Text
+                id="text_register"
+                text="{i18n>register.haveAccount}"
+                class="sapUiSmallMarginTop" />
+
+              <ToolbarSpacer 
+                id="toolbar_spacer" 
+                width="0.2rem"/>
+
+              <Link 
+                id="link_register" 
+                text="{i18n>register.loginAccount}" 
+                press="onRouteLogin" 
+                class="sapUiSmallMarginTop" />
+            </HBox>
+          </VBox>
+        </f:content>
+      </f:Card>
+    </VBox>
+  </content>
+</Page>
 </mvc:View>

@@ -66,7 +66,7 @@
         "viewType": "XML",
         "async": true,
         "bypassed": {
-          "target": "notFound"
+          "target": "NotFound"
         },
         "viewPath": "com.switchhouse.farmtenz.view",
         "controlAggregation": "pages",
@@ -87,26 +87,48 @@
           "target": [
             "register"
           ]
+        },
+        {
+          "name": "home",
+          "pattern": "home/{token}",
+          "target": [
+            "home"
+          ]
+        },
+        {
+          "name": "NotFound",
+          "pattern": "NotFound",
+          "target": [
+            "NotFound"
+          ]
         }
       ],
       "targets": {
         "login": {
           "viewType": "XML",
-          "transition": "slide",
+          "transition": "show",
           "clearControlAggregation": false,
           "viewId": "Login",
           "viewName": "loginView/Login"
         },
         "register": {
           "viewType": "XML",
+          "transition": "show",
           "clearControlAggregation": false,
           "viewId": "Register",
           "viewName": "registerView/Register"
         },
-        "notFound": {
-          "id": "notFound",
-          "name": "NotFound",
-          "transition": "show"
+        "home": {
+          "viewType": "XML",
+          "clearControlAggregation": false,
+          "viewId": "Home",
+          "viewName": "homeView/Home"
+        },
+        "NotFound": {
+          "viewId": "NotFound",
+          "viewName": "NotFound",
+          "transition": "show",
+          "clearControlAggregation": false
        }
       }
     },

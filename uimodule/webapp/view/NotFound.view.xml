@@ -1,6 +1,20 @@
 <mvc:View
-   controllerName="sap.ui.demo.nav.controller.NotFound"
+   controllerName="com.switchhouse.farmtenz.controller.NotFound"
    xmlns="sap.m"
    xmlns:mvc="sap.ui.core.mvc">
-   <MessagePage id="messagePageNotFound" title="{i18n>NotFound}" text="{i18n>NotFound.text}" description="{i18n>NotFound.description}"/>
+
+   <Page id="id_page" showHeader="false">
+      <content>
+         <IllustratedMessage id="id_illustrated_message"
+            illustrationType="sapIllus-PageNotFound"
+            enableVerticalResponsiveness="true"
+            title="{i18n>notFound}"
+            description="{i18n>notFound.text}">
+            
+            <additionalContent>
+               <Button id="btn_back" text="{i18n>notFound.btnBack}" press="onNavBack" />
+            </additionalContent>
+         </IllustratedMessage>
+         </content>
+   </Page>
 </mvc:View>
